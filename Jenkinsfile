@@ -54,11 +54,17 @@ pipeline {
            }       
     }
     
-    
-    stage ('DAST') {
+    stage ('Port Scan') {
+	steps {
+	sh 'rm nmap* || true'
+	sh 'docker run --rm -v "$(pwd)":/data uzyexe/nmap -sS -sV -oX nmap 192.168.1.107'
+	sh 'cat nmap'
+ }
+    }
+      stage ('DAST') {
       steps {
         sshagent(['zap']) {
-         sh 'ssh -o  StrictHostKeyChecking=no kd@192.168.1.108 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.1.107:8080/webapp/" || true'
+         sh 'ssh -o  StrictHostKeyChecking=no kd@192.168.1.100 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.1.107:8080/webapp/" || true'
         }
       }
     }
