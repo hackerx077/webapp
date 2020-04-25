@@ -29,6 +29,8 @@ pipeline {
          sh 'bash owasp-dependency-check.sh'
          sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/reports/dependency-check-report.xml'
     
+        }
+      }
       stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
