@@ -1,9 +1,8 @@
 #!/bin/sh
 
-OWASPDC_VERSION="latest"
 OWASPDC_DIRECTORY=$HOME/OWASP-Dependency-Check
-OWASPDC_PROJECT="dependency-check scan: $(pwd)"
 DATA_DIRECTORY="$OWASPDC_DIRECTORY/data"
+REPORT_DIRECTORY="$OWASPDC_DIRECTORY/reports"
 CACHE_DIRECTORY="$OWASPDC_DIRECTORY/data/cache"
 
 if [ ! -d "$DATA_DIRECTORY" ]; then
