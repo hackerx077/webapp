@@ -16,18 +16,16 @@ if [ ! -d "$CACHE_DIRECTORY" ]; then
 fi
 
 # Make sure we are using the latest version
-docker pull owasp/dependency-check:$DC_VERSION
+docker pull owasp/dependency-check
 
 docker run --rm \
-    -e user=$USER \
-    -u $(id -u ${USER}):$(id -g ${USER}) \
-    --volume $(pwd):/src:z \
-    --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data:z \
-    --volume $(pwd)/odc-reports:/report:z \
-    owasp/dependency-check:$DC_VERSION \
+    --volume $(pwd):/src \
+    --volume "$DATA_DIRECTORY":/usr/share/dependency-check/data \
+    --volume $(pwd)/odc-reports:/report \
+    owasp/dependency-check \
     --scan /src \
     --format "ALL" \
-    --project "$DC_PROJECT" \
+    --project "My OWASP Dependency Check Project" \
     --out /report
-    # Use suppression like this: (where /src == $pwd)
+    # Use suppression like this: (/src == $pwd)
     # --suppression "/src/security/dependency-check-suppression.xml"
