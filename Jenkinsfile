@@ -73,7 +73,7 @@ stage ('Nikto Scan') {
 steps {
 sh 'rm nikto-output.xml || true'
 sh 'docker pull secfigo/nikto:latest'
-sh 'docker run --rm -v $(pwd):/report -i secfigo/nikto:latest -h 192.168.1.107 -p 8080 -output /report/nikto-output.xml'
+sh 'docker run secfigo/nikto:latest -h 192.168.1.107:8080 -output /report/nikto-output.xml'
 sh 'cat nikto-output.xml'   
 	}
 }
