@@ -70,7 +70,7 @@ pipeline {
     }
      stage ('SSL Checks') {
      steps {
-     sh 'pip install sslyze==1.4.2'
+     sh 'pip install sslyze==3.0.1'
      sh 'python -m sslyze --regular 192.168.1.107:8080 --json_out sslyze-output.json'
      sh 'cat sslyze-output.json'
 		    }
