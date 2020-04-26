@@ -72,10 +72,10 @@ pipeline {
 stage ('Nikto Scan') {
 steps {
 sh 'rm nikto-output.xml || true'
-sh 'docker pull frapsoft/nikto:latest'
-sh 'docker run --rm -v "$(pwd)":/data frapsoft/nikto -h 192.168.1.107:8080 -output /report/nikto-output.xml'
-sh 'cat nikto-output.xml' 	   
-  }
+sh 'docker pull secfigo/nikto:latest'
+sh 'docker run --user $(id -u):$(id -g) --rm -v $(pwd):/report -i secfigo/nikto:latest -h 192.168.1.107 -p 8080 -output /report/nikto-output.xml'
+sh 'cat nikto-output.xml'   
+	}
 }
      stage ('SSL Checks') {
      steps {
