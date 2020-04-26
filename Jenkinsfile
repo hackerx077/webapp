@@ -73,8 +73,7 @@ stage ('Nikto Scan') {
 steps {
 sh 'rm nikto-output.xml || true'
 sh 'docker pull frapsoft/nikto:latest'
-sh 'docker run frapsoft/nikto --h 54.86.226.84 -p 8080 -output /report/nikto-output.xml'
-sh 'cat nikto-output.xml'   
+sh 'docker run frapsoft/nikto --h 54.86.226.84 -p 8080 -output /report/nikto-output.xml'   
 		    }
 	    }
      stage ('SSL Checks') {
