@@ -61,14 +61,7 @@ pipeline {
 	sh 'cat nmap'
  }
     }
-      stage ('DAST') {
-      steps {
-        sshagent(['zap']) {
-         sh 'ssh -o  StrictHostKeyChecking=no kd@192.168.1.103 "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.1.107:8080/webapp/" || true'
-        }
-      }
-    }
-
+      
 stage ('Nikto Scan') {
 steps {
 sh 'rm nikto-output.xml || true'
