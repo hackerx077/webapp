@@ -71,7 +71,7 @@ sh 'docker run -t secfigo/nikto secfigo/nikto.py -h http://192.168.1.107:8080'
 
 stage ('SSL Checks') {
 steps {
-sh 'docker run --rm zeitgeist/docker-sslscan 192.168.1.107'
+sh 'docker run --rm zeitgeist/docker-sslscan 8.8.8.8'
 		    }
 	    }
   
