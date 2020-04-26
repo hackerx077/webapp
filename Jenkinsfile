@@ -72,10 +72,10 @@ sh 'ssh -o StrictHostKeyChecking=no kd@192.168.1.103 "docker run -t owasp/zap2do
 	  
 stage ('Nikto Scan') {
 steps {
-sh 'rm nikto-output.xml || true'
+sh 'rm nikto.xml || true'
 sh 'docker pull secfigo/nikto:latest'
 sh 'docker run -t secfigo/nikto secfigo/nikto.py -h http://192.168.1.107:8080'
-sh 'cat target/nikto/nikto-output.txt'
+sh 'cat target/nikto/nikto.xml'
 	}
 }
      stage ('SSL Checks') {
