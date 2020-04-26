@@ -70,7 +70,7 @@ sh 'docker run -t secfigo/nikto secfigo/nikto.py -h http://192.168.1.107:8080'
 }
      stage ('SSL Checks') {
      steps {
-     sh 'pip install sslyze==3.0.1'
+     sh 'pip install sslyze'
      sh 'python -m sslyze --regular 8.8.8.8:8080 --json_out sslyze-output.json'
      sh 'cat sslyze-output.json'
 		    }
