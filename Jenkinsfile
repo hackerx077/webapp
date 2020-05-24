@@ -74,8 +74,7 @@ sh 'docker run -t secfigo/nikto secfigo/nikto.py -h http://192.168.1.108:8080'
 stage ('SSL Checks') {
 		    steps {
 			sh 'docker run --rm zeitgeist/docker-sslscan www.google.com'
-			sh 'cat sslyze-output.json'
-		    }
+			}
 	    }
   
 stage ('DAST') {	  
